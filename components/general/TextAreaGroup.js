@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TextFieldGroup({ name, value, label, error, type, onChange, focus }) {
+function TextAreaGroup({ name, value, label, error, type, onChange, focus, rows}) {
   return (
     <div className="controls controls-small">
-      <input
+      <textarea
         value={value}
         onChange={onChange}
         type={type}
@@ -12,7 +12,8 @@ function TextFieldGroup({ name, value, label, error, type, onChange, focus }) {
         placeholder={label}
         className="input control-input"
         autoFocus={focus}
-      />
+        rows={rows}
+      ></textarea>
     { error && <span className="lbl lbl-danger">{error}</span> }
 
       <style jsx>{`
@@ -69,7 +70,6 @@ function TextFieldGroup({ name, value, label, error, type, onChange, focus }) {
         .controls {
           padding: 10px 0px;
           position: relative;
-          width: 100%;
         }
 
         .controls-small {
@@ -80,7 +80,7 @@ function TextFieldGroup({ name, value, label, error, type, onChange, focus }) {
   );
 }
 
-TextFieldGroup.propTypes = {
+TextAreaGroup.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
@@ -90,9 +90,9 @@ TextFieldGroup.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-TextFieldGroup.defaultProps = {
+TextAreaGroup.defaultProps = {
   type: 'text',
   focus: false,
 };
 
-export default TextFieldGroup;
+export default TextAreaGroup;

@@ -139,7 +139,7 @@ input[type="checkbox"]:checked:before {
 }
 
 body {
-  background: #f7f7f7;
+  background: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   color: #353535;
 }
@@ -511,7 +511,6 @@ p {
   display: inline-block;
   font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   color: white;
-  line-height: 1;
   text-align: center;
   -webkit-appearance: none;
 }
@@ -1660,14 +1659,8 @@ div.m-modals.ng-hide > .modal.ng-enter.ng-enter-active {
   display: inline-block;
 }
 
-.box-landing {
-  margin: 100px 5px;
-  margin-right: 20px;
-  width: 100%;
-  text-align: center;
-  padding: 50px 20px;
-  padding-left: 15%;
-  padding-right: 15%;
+.icon-star {
+  font-size: 14px !important;
 }
 
 .box-landing-column {
@@ -2267,14 +2260,6 @@ body {
   font-size: 18px;
 }
 
-.review-row {
-  border-bottom: 1px solid #DDDDDD;
-  padding: 15px 0px;
-}
-
-.review-body {
-  font-size: 16px;
-}
 
 @media (max-width: 600px) {
   .ProfileService-supplier {
@@ -2908,6 +2893,13 @@ body {
 
 .icon-green {
   color: #1fa67a !important;
+}
+
+hr {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 0;
+  border-top: 1px solid #eee;
 }
 
 @media (max-width: 600px) {

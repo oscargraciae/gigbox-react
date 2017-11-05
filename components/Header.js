@@ -373,7 +373,7 @@ class Header extends React.Component {
           .menu-categories-items > li {
             visibility: visible !important;
             display: inline-block !important;
-            padding: 10px 0;
+            padding: 1px 0;
           }
 
           .menu-categories-items a{

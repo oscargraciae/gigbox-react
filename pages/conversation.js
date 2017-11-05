@@ -1,6 +1,6 @@
 // import libraries
 import React from 'react';
-import Validator from 'validator';
+import Validator from 'validator'
 import isEmpty from 'lodash/isEmpty';
 import Link from 'next/link';
 

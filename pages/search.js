@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 
 import { removeDiacritics } from '../utils/removeAccents';
 
@@ -23,24 +22,7 @@ class Categories extends React.Component {
   constructor(props) {
     super(props);
     this.state = { address: props.location, services: props.services };
-
-    // this.onChange = (address) => this.setState({ address })
   }
-
-  // handleSelect = (address, placeId) => {
-  //   this.setState({ address: address });
-  //   geocodeByAddress(this.state.address,  (err, latLng) => {
-  //     if (err) { console.log('Oh no!', err) }
-  //     api.categories.getServices(
-  //       removeDiacritics(this.props.query.category),
-  //       removeDiacritics(this.props.query.subcategory),
-  //       latLng.lat,
-  //       latLng.lng
-  //     ).then((data) => {
-  //       this.setState({ services: data });
-  //     })
-  //   });
-  // }
 
   render() {
     const inputProps = {
@@ -72,7 +54,7 @@ class Categories extends React.Component {
                   <span>Ciudad o dirección</span>
                   <div>
                     <form onSubmit={this.handleFormSubmit}>
-                      <PlacesAutocomplete inputProps={inputProps} onSelect={this.handleSelect} />
+
                     </form>
                   </div>
                 </div>

@@ -10,6 +10,7 @@ import ServiceCheckout from '../components/service/ServiceCheckout';
 import UserContainer from '../components/service/UserContainer';
 import SliderServices from '../components/common/SliderServices';
 import FavoritePanel from '../components/service/FavoritePanel';
+import ShareButtons from '../components/service/ShareButtons';
 
 class Service extends React.Component {
 
@@ -36,7 +37,7 @@ class Service extends React.Component {
 
   async initialFetch() {
     const [comments, services] = await Promise.all([
-      api.services.getComments(this.props.id),
+      api.services.getEvaluations(this.props.id),
       api.user.getServices(this.props.service.user.username),
     ]);
     const currentUser = JSON.parse(localStorage.getItem('user'));
@@ -55,12 +56,13 @@ class Service extends React.Component {
             </div>
 
             <div className="col-md-4 col-xs-12 col-fixed">
+              <ShareButtons service={this.props.service} />
               <UserContainer user={this.props.service.user} service={this.props.service} isAuthenticated={this.props.isAuthenticated} />
 
               { this.props.isAuthenticated && this.state.currentUser.id !== this.props.service.user.id &&
                 <ServiceCheckout service={this.props.service} />
               }
-              <FavoritePanel service={this.props.service} />
+              {/* <FavoritePanel service={this.props.service} /> */}
             </div>
           </div>
         </div>
@@ -69,6 +71,9 @@ class Service extends React.Component {
           { this.props.serviceRecommended.length > 0 && <SliderServices services={this.props.serviceRecommended} /> }
         </div>
         <style jsx>{`
+          h3{
+            font-size: 18px;
+          }
           .cover-color{
             background: red; /* For browsers that do not support gradients */
             background: linear-gradient(to right, #353F60 , #6C6C93); /* Standard syntax */

@@ -52,20 +52,6 @@ class FavoritePanel extends React.Component {
           { this.props.service.favorite_count > 0 &&
             <span className="spanMessage">A {this.props.service.favorite_count} personas le gusta este servicio</span>
           }
-
-          <br />
-          <div className="btnSahred">
-            <div className="fb-share-button shareButton" data-href={`/service/${this.props.service.id}`} data-layout="button" data-size="small" data-mobile-iframe="true">
-              <a className="fb-xfbml-parse-ignore social-button" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgigbox.mx%2Fservice%2F${this.props.service.id}}&amp;src=sdkpreparse`} >
-                <i className="fa fa-facebook fa-lg" aria-hidden="true" />
-              </a>
-					  </div>
-            <div className="shareButton">
-              <a className="social-button" href={`https://twitter.com/intent/tweet?text=¡Echale un vistazo! ${this.props.service.name} https://gigbox.mx/service/${this.props.service.id} @gigboxmx&hashtags=Gigbox&related=gigboxmx`} target="_blank">
-                <i className="fa fa-twitter fa-lg" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
         </div>
 
         <style jsx>{`

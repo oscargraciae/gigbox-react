@@ -68,18 +68,18 @@ export default Page => class DefaultPage extends React.Component {
         </Head>
         <Header {...this.props} />
         <div className="page">
-          <NavCategories />
+          {<NavCategories />}
           <Page {...this.props} />
           <Footer />
         </div>
 
         <style jsx global>{`
-          .page {
-            background: #FFFFFF;
+          body {
+            background: white;
           }
 
-          .lbl-blue {
-            color: #24a1b2;
+          .lbl-gray {
+            color: #485769;
           }
 
           .lbl-danger {
@@ -107,6 +107,14 @@ export default Page => class DefaultPage extends React.Component {
             width: 100%;
           }
 
+          .titlePage {
+            font-size: 32px;
+            color: #333;
+            font-weight: 500;
+            margin: 0px;
+            padding: 0px;
+          }
+
           @media (max-width: 600px) {
             h1 {
               font-size: 16px;
@@ -114,6 +122,14 @@ export default Page => class DefaultPage extends React.Component {
 
             h2 {
               font-size: 14px;
+            }
+
+            .titlePage {
+              font-size: 18px;
+              color: #333;
+              font-weight: bold;
+              margin: 0px;
+              padding: 0px;
             }
           }
 

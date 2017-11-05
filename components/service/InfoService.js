@@ -1,11 +1,14 @@
+// import libraries
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import NumberFormat from 'react-number-format';
 
+// import components
 import ServiceRatingBox from './ServiceRatingBox';
 import ReviewsList from './ReviewsList';
 import Breadcrumb from './Breadcrumb';
+import CommentsList from './CommentsList';
 
 function InfoService(props) {
   const { service } = props;
@@ -32,18 +35,15 @@ function InfoService(props) {
               <div className="User-data service-data-resp">
                 <h1 className="service-data-title" itemProp="name">{service.name}</h1>
                 <h2 className="lblAddress">{service.user.address}</h2>
-                <div className="container-box-rating">
-                  {/*<div className="product-rating-wrapper">
-                    <div className="product-rating"><span>{service.rating_general}</span></div>
-                    <i className="fa fa-star" aria-hidden="true" />
-                  </div>*/}
-                </div>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12 col-xs-12 service-data-resp">
               <h3>Información del servicio</h3>
+              <div className="text-service-description" itemProp="description">{service.description}</div>
+              <hr />
+              <h3>Requisitos e instrucciones</h3>
               <div className="text-service-description" itemProp="description">{service.description}</div>
               <hr />
               <h3>Precios y paquetes</h3>
@@ -67,6 +67,8 @@ function InfoService(props) {
                 })}
               <hr />
               {/*<ServiceRatingBox rating={service.service_ratings} />*/}
+              <CommentsList service={service} />
+              <hr />
               { props.evaluations.length > 0 && <ReviewsList evaluations={props.evaluations} /> }
             </div>
           </div>
@@ -102,13 +104,13 @@ function InfoService(props) {
           }
 
           .text-service-description {
-            font-size: 16px;
+            font-size: 14px;
             line-height: 24px;
             color: #757575;
           }
 
           .service-data-resp h3{
-            font-size: 24px;
+            font-size: 18px;
           }
 
           .servicePanelInfo {
@@ -119,7 +121,7 @@ function InfoService(props) {
             margin: 10px 0px;
           }
           .packageTitle {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
             padding: 10px 0px;
           }
@@ -131,11 +133,12 @@ function InfoService(props) {
           .packagePrice{
             color: #757575;
             padding-left: 23px;
+            font-size: 14px;
           }
 
           .packageResume {
             color: #757575;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 24px;
             padding-left: 23px;
           }

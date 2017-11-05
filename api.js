@@ -1,9 +1,9 @@
 import axios from 'axios';
 // import fetch from 'isomorphic-unfetch';
 
-// const baseUrl = 'http://localhost:8000';
+const baseUrl = 'http://localhost:8000';
 // const baseUrl = 'http://127.0.0.1:3000';
-const baseUrl = 'https://api.gigbox.mx';
+// const baseUrl = 'https://api.gigbox.mx';
 const api = {
   user: {
     async authentication(email, password) {
@@ -79,8 +79,20 @@ const api = {
       const response = await axios.get(`${baseUrl}/api/v1/services/search?q=&lat=25.6866142&lng=-100.3161126`);
       return response.data;
     },
-    async getComments(idService) {
+    async getEvaluations(idService) {
       const response = await axios.get(`${baseUrl}/api/v1/services/${idService}/evaluations`);
+      return response.data;
+    },
+    async getComments(idService, page) {
+      const response = await axios.get(`${baseUrl}/api/v1/services/${idService}/comments?page=${page}`);
+      return response.data;
+    },
+    async setComment(idService, data) {
+      const response = await axios.post(`${baseUrl}/api/v1/services/${idService}/comments`, data);
+      return response.data;
+    },
+    async deleteComment(idService, idComment) {
+      const response = await axios.delete(`${baseUrl}/api/v1/services/${idService}/comments/${idComment}`);
       return response.data;
     },
     async getBySubCategory(id) {
@@ -93,6 +105,10 @@ const api = {
     },
     async myfavorites() {
       const response = await axios.get(`${baseUrl}/api/v1/services/favorites`);
+      return response.data;
+    },
+    async getMyServices() {
+      const response = await axios.get(`${baseUrl}/api/v1/services/my_services`);
       return response.data;
     },
     // async packages() {

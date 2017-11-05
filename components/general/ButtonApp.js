@@ -43,6 +43,11 @@ function ButtonApp(props) {
           font-size: 16px;
         }
 
+        .btn-small {
+          padding: 8px 20px;
+          font-size: 14px;
+        }
+
         .btn-block {
           display: block;
           white-space: normal;

@@ -1,6 +1,8 @@
+//import libraries
 import React, { Component } from 'react';
-import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
+import Geosuggest from 'react-geosuggest';
 
+//import components
 import ButtonApp from '../general/ButtonApp';
 
 import api from '../../api';
@@ -12,23 +14,12 @@ class BoardingCity extends Component {
       loading: false,
       isLoading: false,
       address: '',
-      geocodeResults: null,
       latLng: null,
     };
 
     this.save = this.save.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
+    this.onSuggestSelect = this.onSuggestSelect.bind(this);
     this.onChange = (address) => this.setState({ address });
-    this.renderGeocodeSuccess = this.renderGeocodeSuccess.bind(this);
-  }
-
-  handleSelect(address, placeId) {
-    this.setState({ loading: true });
-    geocodeByAddress(address,  (err, latLng) => {
-      if (err) { console.log('Oh no!', err); }
-
-      this.setState({ loading: false, address, geocodeResults: this.renderGeocodeSuccess(latLng.lat, latLng.lng), latLng });
-    });
   }
 
   async save() {
@@ -42,53 +33,35 @@ class BoardingCity extends Component {
     }
   }
 
-  renderGeocodeSuccess(lat, lng) {
-    return (
-      <div className="alert alert-success" role="alert">
-        <strong>Success!</strong> Geocoder found latitude and longitude: <strong>{lat}, {lng}</strong>
-      </div>
-    );
+  onSuggestSelect(suggest) {
+    console.log(suggest);
+
+    this.setState({ loading: false, address: suggest.description, latLng: suggest.location });
+  }
+
+  onSuggestNoResults(userInput) {
+    console.log('onSuggestNoResults for :' + userInput);
   }
 
   render() {
-    const inputProps = {
-      value: this.state.address,
-      onChange: this.onChange,
-      placeholder: 'Ciudad, Estado',
-      autoFocus: true,
-    };
-
-    const cssClasses = {
-      root: 'form-group',
-      input: 'inputCity',
-      autocompleteContainer: 'autocomplete-container',
-    };
-
-    const AutocompleteItem = ({ formattedSuggestion }) => (
-      <div className="Demo__suggestion-item">
-        <i className="fa fa-map-marker Demo__suggestion-icon" />
-        <strong>{formattedSuggestion.mainText}</strong>{' '}
-        <small className="text-muted">{formattedSuggestion.secondaryText}</small>
-      </div>);
-
     return (
       <div>
         <h1>¿Dónde vives?</h1>
-        <p>Conecta con personas que viven cerca de ti.</p>
 
         <div>
           <form onSubmit={this.handleFormSubmit} className="text-left">
-            <PlacesAutocomplete
-              inputProps={inputProps}
-              onSelect={this.handleSelect}
-              classNames={cssClasses}
-              autocompleteItem={AutocompleteItem}
-            />
+            <Geosuggest
+              placeholder="Ciudad, Estado"
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onChange={this.onChange}
+              onSuggestSelect={this.onSuggestSelect}
+              suggestsClassName="suggest"
+              suggestItemClassName="suggestItem"
+              onSuggestNoResults={this.onSuggestNoResults}
+              inputClassName="inputCity" />
             <div className="containerButton text-center">
               {this.state.loading ? <div><i className="fa fa-spinner fa-pulse fa-3x loadingSpinner" /></div> : null}
-              {/*{!this.state.loading && this.state.geocodeResults ?
-                <div className='geocoding-results'>{this.state.geocodeResults}</div> :
-              null}*/}
             </div>
           </form>
         </div>
@@ -97,7 +70,7 @@ class BoardingCity extends Component {
             text="Continuar"
             buttonStyle="btn btn-primary btn-large"
             click={this.save}
-            disabled={!this.state.geocodeResults}
+            disabled={!this.state.latLng}
             loading={this.state.isLoading}
           />
         </div>
@@ -105,6 +78,25 @@ class BoardingCity extends Component {
         <style>{`
           .containerButton {
             padding: 10px 0px;
+          }
+
+          .geosuggest__suggests--hidden {
+            max-height: 0;
+            overflow: hidden;
+            border-width: 0;
+          }
+
+          .suggest {
+            border: 1px solid #DDD;
+          }
+
+          .suggestItem:hover {
+            color: green;
+            cursor: pointer;
+          }
+
+          .suggestItem {
+            padding: 10px;
           }
 
           .inputCity {

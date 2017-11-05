@@ -17,6 +17,15 @@ function ReviewsList(props) {
           ))
         }
       </div>
+      <style jsx>{`
+        h3{
+          font-size: 18px;
+          margin-bottom: 24px;
+        }
+        .review-row {
+          margin-bottom: 16px;
+        }
+      `}</style>
     </div>
   );
 }

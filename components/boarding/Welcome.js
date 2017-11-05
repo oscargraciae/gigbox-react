@@ -22,7 +22,7 @@ class Welcome extends Component {
     return (
       <div>
         <h1 className="BoardingTitle">¡Bienvenido! Estamos contentos de que estes aquí {user.first_name}.</h1>
-        {/*<p className="BoardingDescription">Gigbox te permite conectar con personas que pueden ayudarte a resolver tus problemas de una manera segura y confiable.</p>*/}
+        {<p className="BoardingDescription">Gigbox te permite conectar con personas que pueden ayudarte a resolver tus problemas de una manera segura y confiable.</p>}
         <ButtonApp
           text="¡Comenzar!"
           buttonStyle="btn btn-primary btn-large"

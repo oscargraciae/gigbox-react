@@ -9,7 +9,7 @@ import defaultPage from '../hocs/defaultPage';
 import Jumbotron from '../components/home/Jumbotron';
 import MetaPage from '../components/MetaPage';
 
-class Home extends React.Component {
+class ServiceNew extends React.Component {
   static async getInitialProps() {
     const [serviceRecommended, services1, services2] = await Promise.all([
       api.services.getSample(),
@@ -69,149 +69,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <MetaPage
-          title="Gigbox: Contrata a expertos en linea y encuentra trabajo de independiente"
-          description="Gigbox te permite conectar con personas que pueden ayudarte a resolver problemas de una manera rápida, segura y confiable."
-          image="../static/facebook-post.png"
-          url="https://gigbox.mx/"
-        />
-        <Jumbotron />
         <div className="container-white">
-          <div className="container container-margin-top">
-            <div>
-              <form onSubmit={this.onSubmit} className="search-strip">
-                <div className="search-input-wrapper">
-                  <i className="fa fa-search" aria-hidden="true" />
-                  <input
-                    type="text"
-                    placeholder="Busca por nombre de servicio"
-                    value={this.state.query}
-                    onChange={this.onChange}
-                    name="query"
-                  />
-                </div>
-                <button className="search-button" onClick={this.onClick}>
-                  <span>Buscar</span>
-                </button>
-              </form>
 
-              <div className="containerFormMobile">
-                <div className="homeMobile">
-                  <div className="text-center box-mobile">
-                    <h1 className="titleMobile">Conectate con personas talentosas, independientes y calificadas.</h1>
-                  </div>
-                </div>
-                <form onSubmit={this.onSubmit} className="searchMobileHome">
-                  <input
-                    type="text"
-                    placeholder="Busca por nombre de servicio"
-                    value={this.state.query}
-                    onChange={this.onChange}
-                    className="inputMobile"
-                    name="query"
-                  />
-                  <button className="btn btnMobileHome" onClick={this.onClick}>
-                    <span><i className="fa fa-search" aria-hidden="true" /></span>
-                  </button>
-                </form>
-              </div>
-
-            </div>
-
-            {/* <div className="row row-feature">
-              <div className="col-md-12">
-
-                <div className="col-md-3">
-                  <div className="infoRow">
-                    <div className="infoImage">
-                      <i className="fa fa-map-marker fa-lg" aria-hidden="true" />
-                    </div>
-                    <div className="infoTitle">Ubicación</div>
-                  </div>
-                  <p className="infoDescription">Gigbox te permite localizar proveedores cercanos a tu ubicación.</p>
-                </div>
-                <div className="col-md-3">
-                  <div className="infoRow">
-                    <div className="infoImage">
-                      <i className="fa fa-star fa-lg" aria-hidden="true" />
-                    </div>
-                    <div className="infoTitle">Mayor confianza</div>
-                  </div>
-                  <p className="infoDescription">Las evaluaciones te permite saber si el proveedor que estas contratando es de confianza.</p>
-                </div>
-                <div className="col-md-3">
-                  <div className="infoRow">
-                    <div className="infoImage">
-                      <i className="fa fa-map-marker fa-lg" aria-hidden="true" />
-                    </div>
-                    <div className="infoTitle">Pagos seguros</div>
-                  </div>
-                  <p className="infoDescription">Paga en linea de manera fácil, rápida y segura.</p>
-                </div>
-
-
-                <div className="col-md-3">
-                  <div className="infoRow">
-                    <div className="infoImage">
-                      <i className="fa fa-certificate fa-lg" aria-hidden="true" />
-                    </div>
-                    <div className="infoTitle">Garantia</div>
-                  </div>
-                  <p className="infoDescription">El servicio que contrates será realizado satisfactoriamente o te regresamos el dinero.</p>
-                </div>
-
-              </div>
-            </div> */}
-
-            <hr />
-
-            <div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Nuevos en Gigbox</h2>
-              <section className="UserServiceListWhite">
-                { this.props.services.length > 0 && <SliderServices services={this.props.services} /> }
-              </section>
-            </div>
-
-            <div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Servicios de Idiomas</h2>
-              <section className="UserServiceListWhite">
-                { this.props.services1.length > 0 && <SliderServices services={this.props.services1} /> }
-              </section>
-            </div>
-
-            <div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Servicios de Fotografía Y Video</h2>
-              <section className="UserServiceListWhite">
-                { this.props.services2.length > 0 && <SliderServices services={this.props.services2} /> }
-              </section>
-            </div>
-
-            <div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Servicios de Informática Y Tecnología</h2>
-              <section className="UserServiceListWhite">
-                { this.state.services1.length > 0 && <SliderServices services={this.state.services1} /> }
-              </section>
-            </div>
-
-            <div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Servicios de Economía Y Empresas</h2>
-              <section className="UserServiceListWhite">
-                { this.state.services2.length > 0 && <SliderServices services={this.state.services2} /> }
-              </section>
-            </div>
-
-            <div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Servicios academicos</h2>
-              <section className="UserServiceListWhite">
-                { this.state.services3.length > 0 && <SliderServices services={this.state.services3} /> }
-              </section>
-            </div>
-
-            {/*<div className="Main-contentCategory text-center">
-              <h2 className="subtitleMain">Explora otros servicios</h2>
-            </div>*/}
-
-          </div>
         </div>
         <style jsx>{`
           .form {
@@ -236,6 +95,11 @@ class Home extends React.Component {
 
           .search-strip {
             position: relative;
+            -moz-transform: translateY(-120%);
+            -o-transform: translateY(-120%);
+            -ms-transform: translateY(-120%);
+            -khtml-transform: translateY(-120%);
+            transform: translateY(-120%);
             display: flex;
             justify-content: center;
             z-index: 2;
@@ -414,4 +278,4 @@ class Home extends React.Component {
   }
 }
 
-export default defaultPage(Home);
+export default defaultPage(ServiceNew);
