@@ -111,10 +111,24 @@ const api = {
       const response = await axios.get(`${baseUrl}/api/v1/services/my_services`);
       return response.data;
     },
-    // async packages() {
-    //   const response = await axios.get(`${baseUrl}/api/v1/services/${idService}/evaluations`);
-    //   return response.data;
-    // },
+    async getMyService(id) {
+      const response = await axios.get(`${baseUrl}/api/v1/services/${id}}/show_service`);
+      return response.data;
+    },
+    async create(data) {
+      const response = await axios.post(`${baseUrl}/api/v1/services`, data);
+      return response.data;
+    },
+    async getUnitTypes() {
+      const response = await axios.get(`${baseUrl}/api/v1/unit_types`);
+      return response.data;
+    },
+  },
+  packages: {
+    async create(data) {
+      const response = await axios.post(`${baseUrl}/api/v1/packages`, data);
+      return response.data;
+    },
   },
   notifications: {
     async getNotifications() {

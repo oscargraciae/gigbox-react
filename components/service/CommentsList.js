@@ -44,7 +44,9 @@ class CommentsList extends React.Component {
     const response = await api.services.setComment(this.props.service.id, comment)
     const comments = this.state.comments;
     comments.unshift(response);
-    this.setState({ comments, comment: '' });
+
+
+    this.setState({ comments, comment: '' })
   }
 
   moreComments = async () => {

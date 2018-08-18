@@ -54,6 +54,7 @@ export default Page => class DefaultPage extends React.Component {
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css" />
 
           <link rel="stylesheet" href="/static/style.css" />
           <link rel="shortcut icon" type="image/png" href="/static/favicon.png" />
@@ -113,6 +114,12 @@ export default Page => class DefaultPage extends React.Component {
             font-weight: 500;
             margin: 0px;
             padding: 0px;
+          }
+
+          .headerPage {
+            padding: 10px 0px;
+            display: flex;
+            justify-content: space-between;
           }
 
           @media (max-width: 600px) {

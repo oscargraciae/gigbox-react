@@ -6,7 +6,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const admin = require('firebase-admin');
 
-var serviceAccount = require("./config/firebase-server.json");
+const serviceAccount = require('./config/firebase-server.json');
 
 const firebase = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -36,6 +36,14 @@ app.prepare()
 
   server.get('/conversation/:id', (req, res) => {
     return app.render(req, res, '/conversation', { username: req.params.id });
+  });
+
+  server.get('/services/new', (req, res) => {
+    return app.render(req, res, '/serviceNew');
+  });
+
+  server.get('/services/edit/:id', (req, res) => {
+    return app.render(req, res, '/serviceEdit', { id: req.params.id, params: req.params });
   });
 
   server.get('*', (req, res) => {

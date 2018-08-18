@@ -190,7 +190,7 @@ p {
   color: #020621;
   font-size: 12px;
   line-height: 16px;
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .link-card {
@@ -228,7 +228,7 @@ p {
 }
 
 .container-margin-top {
-  padding-top: 40px;
+  padding-top: 50px;
 }
 
 .row-centered {
@@ -349,7 +349,12 @@ p {
 
 .input:focus {
   outline: 0px;
-  border: 1px solid #ff1940 !important;
+  border: 1px solid #333333 !important;
+}
+
+.inputPrice:focus {
+  outline: 0px;
+  border: 0px solid #333333 !important;
 }
 
 .input-small {
@@ -2635,13 +2640,13 @@ body {
 }
 
 .cover-image-button {
-  padding: 20px;
-  height: 150px;
-  width: 150px;
+  padding: 30px;
+  height: 169px;
+  width: 301px;
   background: white;
   border: 2px dashed #DDDDDD;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   color: #333333;
   cursor: pointer;
 }

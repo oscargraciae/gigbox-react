@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TextAreaGroup({ name, value, label, error, type, onChange, focus, rows}) {
+function TextAreaGroup({ name, value, label, error, onChange, rows}) {
   return (
     <div className="controls controls-small">
       <textarea
         value={value}
         onChange={onChange}
-        type={type}
         name={name}
         placeholder={label}
         className="input control-input"
-        autoFocus={focus}
         rows={rows}
       ></textarea>
     { error && <span className="lbl lbl-danger">{error}</span> }
@@ -24,13 +22,18 @@ function TextAreaGroup({ name, value, label, error, type, onChange, focus, rows}
             border-radius: 2px;
             border: 1px solid #c4c4c4;
             color: #565a5c;
-            padding: 8px 10px;
+            padding: 10px 10px;
             width: 100%;
-            font-size: 16px;
+            font-size: 14px;
+        }
+
+        .input:focus {
+          outline: 0px;
+          border: 1px solid #333 !important;
         }
 
         .control-input{
-          border: 1px solid #aaa;
+          border: 1px solid #ccc;
         }
 
         .input-root{
@@ -73,7 +76,7 @@ function TextAreaGroup({ name, value, label, error, type, onChange, focus, rows}
         }
 
         .controls-small {
-          padding: 5px;
+          padding: 0px;
         }
       `}</style>
     </div>
@@ -85,14 +88,14 @@ TextAreaGroup.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   error: PropTypes.string,
-  focus: PropTypes.bool,
-  type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  rows: PropTypes.number,
 };
 
 TextAreaGroup.defaultProps = {
   type: 'text',
   focus: false,
+  rows: 4,
 };
 
 export default TextAreaGroup;

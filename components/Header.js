@@ -178,7 +178,7 @@ class Header extends React.Component {
               </a>
             </li>
           }
-          <InboxList count={this.state.messagesCount} />
+          {/* <InboxList count={this.state.messagesCount} /> */}
           <NotificationList count={this.state.notificationsCount} />
 
           <li className="dropdown">

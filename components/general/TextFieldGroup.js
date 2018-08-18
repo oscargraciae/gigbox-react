@@ -23,13 +23,13 @@ function TextFieldGroup({ name, value, label, error, type, onChange, focus }) {
             border-radius: 2px;
             border: 1px solid #c4c4c4;
             color: #565a5c;
-            padding: 8px 10px;
+            padding: 12px 10px;
             width: 100%;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .control-input{
-          border: 1px solid #aaa;
+          border: 1px solid #ccc;
         }
 
         .input-root{
@@ -73,7 +73,7 @@ function TextFieldGroup({ name, value, label, error, type, onChange, focus }) {
         }
 
         .controls-small {
-          padding: 5px;
+          padding: 5px 0;
         }
       `}</style>
     </div>
